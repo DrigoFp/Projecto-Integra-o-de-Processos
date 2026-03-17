@@ -2,19 +2,21 @@
   max-width: 700px;
   margin: 40px auto;
   padding: 25px;
-  background: #1e1e1e;
-  color: #fff;
+  background: #0a0a0a;
+  color: rgb(24, 164, 201);
   border-radius: 12px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.4);
-  font-family: Arial, sans-serif;
+  border: 1px solid #222;
+  box-shadow: 0 0 15px rgba(24,164,201,0.1);
 }
 
+/* Título */
 h1 {
   margin-bottom: 10px;
   font-size: 2rem;
   color: #4da3ff;
 }
 
+/* Info */
 .data,
 .tipo {
   font-size: 1.1rem;
@@ -22,6 +24,7 @@ h1 {
   opacity: 0.9;
 }
 
+/* Subtítulo */
 h2 {
   margin-top: 25px;
   margin-bottom: 15px;
@@ -31,11 +34,13 @@ h2 {
 
 /* Cartões de exercícios */
 .exercicio {
-  background: #2a2a2a;
+  background: #141414;
   padding: 15px;
   border-radius: 10px;
   margin-bottom: 12px;
   border-left: 4px solid #4da3ff;
+  border: 1px solid #222;
+  box-shadow: 0 0 10px rgba(255,255,255,0.05);
 }
 
 .exercicio h3 {
@@ -67,15 +72,18 @@ h2 {
   transition: 0.2s;
 }
 
+/* Hover */
 .acoes button:hover {
   transform: scale(1.05);
 }
 
+/* Editar */
 .acoes button:first-child {
   background: #4da3ff;
   color: #fff;
 }
 
+/* Apagar */
 .acoes .apagar {
   background: #ff4d4d;
   color: #fff;
