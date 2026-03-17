@@ -1,0 +1,58 @@
+<div class="dashboard-header">
+  <h1>App Treinos 💪</h1>
+  <h2 class="saudacao">{{ name | saudacao }}</h2>
+</div>
+
+<div class="dashboard-container">
+
+  <app-kpi-card 
+    titulo="Último Treino"
+    [valor]="ultimoTreino?.nome ?? 'Nenhum'"
+    icone="🔥"
+  />
+
+  <app-kpi-card 
+    titulo="Total de Treinos"
+    [valor]="totalTreinos"
+    icone="📊"
+  />
+
+  <app-kpi-card 
+    titulo="Total de Exercícios"
+    [valor]="totalExercicios"
+    icone="🏋️"
+  />
+
+  <app-kpi-card 
+    titulo="Média de Exercícios por Treino"
+    [valor]="mediaExercicios"
+    icone="📈"
+  />
+
+  <div class="atalhos">
+    <button class="atalho-card" (click)="mostrarEstatisticas()">
+      Estatísticas
+    </button>
+  </div>
+
+  @if (estatisticasVisiveis) {
+    <div class="card-estatisticas">
+      <h3>Estatísticas por Treino</h3>
+
+      @for (treinoNome of getTreinoKeys(estatisticas); track treinoNome) {
+        <div class="treino-bloco">
+          <h4>{{ treinoNome }}</h4>
+
+          @for (exNome of getExercicioKeys(estatisticas[treinoNome]); track exNome) {
+            <div class="linha">
+              <strong>{{ exNome }}</strong>
+              <p>Peso máximo: {{ estatisticas[treinoNome][exNome].maxPeso }} kg</p>
+              <p>Reps máximas: {{ estatisticas[treinoNome][exNome].maxReps }}</p>
+            </div>
+          }
+        </div>
+      }
+    </div>
+  }
+
+</div>

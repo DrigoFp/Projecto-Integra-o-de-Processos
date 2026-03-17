@@ -1,0 +1,63 @@
+<div class="page-container">
+  <h2>Criar Treino</h2>
+
+  <form [formGroup]="form">
+    <!-- Data -->
+    <label for="data">Data</label>
+    <input id="data" type="date" formControlName="data" [max]="hoje" />
+
+    <!-- Tipo -->
+    <label for="tipo">Tipo de treino</label>
+    <select id="tipo" formControlName="tipo" (change)="onTipoChange()" [disabled]="tipoFixo">
+      <option value="">Escolher tipo</option>
+
+      @for (t of tipos; track t.nome) {
+        <option [value]="t.nome">{{ t.nome }}</option>
+      }
+    </select>
+
+    <!-- Exercício -->
+    <label for="exercicio">Exercício</label>
+    <select id="exercicio" formControlName="exercicio" (change)="onExercicioChange()">
+      <option value="">Escolher exercício</option>
+
+      @for (e of exerciciosFiltrados; track e) {
+        <option [value]="e">{{ e }}</option>
+      }
+    </select>
+
+    <!-- Carga -->
+    <label for="carga">Carga (kg)</label>
+    <input id="carga" type="number" formControlName="carga" min="1" />
+    @if (campoInvalido('carga')) {
+      <p class="erro">A carga deve ser maior que 0 e não podem ser letras.</p>
+    }
+
+    <!-- Repetições -->
+    <label for="reps">Repetições</label>
+    <input id="reps" type="number" formControlName="repeticoes" min="1" />
+    @if (campoInvalido('repeticoes')) {
+      <p class="erro">As repetições devem ser maiores que 0 e não podem ser letras.</p>
+    }
+
+    <!-- BOTÕES -->
+    <button type="button" (click)="adicionarExercicio()" [disabled]="!podeAdicionar">
+      Adicionar exercício
+    </button>
+
+    <button type="button" (click)="finalizarTreino()" [disabled]="exerciciosTemp.length === 0">
+      Finalizar treino
+    </button>
+  </form>
+
+  <!-- LISTA TEMPORÁRIA -->
+  @if (exerciciosTemp.length > 0) {
+    <div class="lista-temp">
+      <h3>Exercícios adicionados:</h3>
+
+      @for (ex of exerciciosTemp; track ex.id) {
+        <p>{{ ex.nome }} — {{ ex.peso }}kg × {{ ex.repeticoes }} reps</p>
+      }
+    </div>
+  }
+</div>

@@ -1,0 +1,70 @@
+<div class="page-container">
+
+  <header class="top-bar">
+    <h2>Lista de Treinos</h2>
+  </header>
+
+  <!-- Estatísticas -->
+  <section class="stats">
+    <div class="stat">
+      <strong>Total de treinos:</strong> {{ totalTreinos }}
+    </div>
+
+    <div class="stat">
+      <strong>Total de exercícios:</strong> {{ totalExercicios }}
+    </div>
+
+    @if (ultimoTreino) {
+      <div class="stat">
+        <strong>Último treino:</strong> {{ ultimoTreino.data }}
+      </div>
+    }
+  </section>
+
+  <!-- Filtro -->
+  <section class="filtros">
+    <label>Filtrar por tipo:</label>
+
+    <select class="btn btn-primary filtro-select"
+            (change)="onFiltroChange($event)">
+      <option value="">Todos</option>
+
+      @for (t of tipos; track t.nome) {
+        <option [value]="t.nome">{{ t.nome }}</option>
+      }
+    </select>
+  </section>
+
+  <!-- Lista -->
+  <section class="lista">
+
+    @for (t of treinosFiltrados; track t.id) {
+      <div class="card" (click)="verDetalhe(t.id)">
+        <header>
+          <h3>{{ t.nome }}</h3>
+        </header>
+
+        <p><strong>Tipo:</strong> {{ t.tipo }}</p>
+        <p><strong>Data:</strong> {{ t.data }}</p>
+
+        <footer>
+          <button class="btn btn-primary"
+                  [routerLink]="['/treinos/editar', t.id]"
+                  (click)="$event.stopPropagation()">
+            Editar
+          </button>
+
+          <button class="btn btn-danger"
+                  (click)="apagarTreino(t.id); $event.stopPropagation()">
+            Apagar 🗑️
+          </button>
+        </footer>
+      </div>
+    }
+
+    @if (treinosFiltrados.length === 0) {
+      <p class="sem-resultados">Nenhum treino encontrado.</p>
+    }
+  </section>
+
+</div>
