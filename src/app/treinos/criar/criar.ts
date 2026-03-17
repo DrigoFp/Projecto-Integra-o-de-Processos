@@ -20,6 +20,7 @@ export class Criar {
   hoje = new Date().toISOString().split('T')[0];
   tipoFixo = false;
   exerciciosTemp: any[] = [];
+  mensagem: string = '';
 
   form = new FormGroup({
     data: new FormControl('', Validators.required),
@@ -109,25 +110,32 @@ export class Criar {
     this.form.get('repeticoes')?.markAsUntouched();
   }
 
-  async finalizarTreino() {
-    const tipoSelecionado = this.form.get('tipo')?.value;
-    const tipo = this.treinosStore.tipos.find((t) => t.nome === tipoSelecionado);
+async finalizarTreino() {
+  const tipoSelecionado = this.form.get('tipo')?.value;
+  const tipo = this.treinosStore.tipos.find((t) => t.nome === tipoSelecionado);
 
-    if (!tipo) return;
+  if (!tipo) return;
 
-    const novoTreino = {
-      nome: tipo.nome,
-      tipo: tipo.nome,
-      data: this.form.get('data')?.value ?? '',
-      exercicios: this.exerciciosTemp,
-    };
+  const novoTreino = {
+    nome: tipo.nome,
+    tipo: tipo.nome,
+    data: this.form.get('data')?.value ?? '',
+    exercicios: this.exerciciosTemp,
+  };
 
-    await this.treinosStore.addTreino(novoTreino);
+  await this.treinosStore.addTreino(novoTreino);
 
-    this.form.reset();
-    this.exerciciosTemp = [];
-    this.tipoFixo = false;
-  }
+  this.mensagem = "Treino criado com sucesso!";
+
+  setTimeout(() => {
+    this.mensagem = "";
+  }, 2000);
+
+  this.form.reset();
+  this.exerciciosTemp = [];
+  this.tipoFixo = false;
+}
+
 
   campoInvalido(campo: string): boolean {
     const control = this.form.get(campo);

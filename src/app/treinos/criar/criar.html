@@ -1,5 +1,8 @@
 <div class="page-container">
   <h2>Criar Treino</h2>
+  @if (mensagem) {
+    <p class="mensagem-sucesso">{{ mensagem }}</p>
+  }
 
   <form [formGroup]="form">
     <!-- Data -->
