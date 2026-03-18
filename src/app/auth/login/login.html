@@ -1,0 +1,15 @@
+<div class="login-container">
+  <h2>Entrar</h2>
+
+  <form [formGroup]="form" (ngSubmit)="login()">
+
+    <input type="email" placeholder="Email" formControlName="email">
+    <input type="password" placeholder="Password" formControlName="password">
+
+    <button type="submit" [disabled]="form.invalid">Entrar</button>
+
+    <p class="erro" *ngIf="erro">{{ erro }}</p>
+
+    <a routerLink="/register">Criar conta</a>
+  </form>
+</div>
