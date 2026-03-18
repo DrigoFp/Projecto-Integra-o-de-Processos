@@ -176,3 +176,13 @@ section {
   font-size: 0.9rem;
   margin-top: 4px;
 }
+.mensagem-sucesso {
+  background-color: rgba(24,164,201,0.15);
+  color: #4da3ff;
+  border: 1px solid #4da3ff;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  font-weight: 600;
+  animation: fadeInOut 2.5s ease forwards;
+}

@@ -16,11 +16,11 @@ export class Editar implements OnInit {
   mensagem: string = '';
 
   constructor(
-    private route: ActivatedRoute, // Permite ler parâmetros da rota.
+    private route: ActivatedRoute,
     private treinosStore: TreinosStore,
   ) {}
 
- mostrarMensagem(texto: string) {
+  mostrarMensagem(texto: string) {
     this.mensagem = texto;
 
     setTimeout(() => {
@@ -29,13 +29,14 @@ export class Editar implements OnInit {
   }
   
   ngOnInit(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id')); //  devolve o ID que está na URL
-    this.treino = this.treinosStore.getTreinoById(id); // Vai ao TreinosStore buscar o treino correspondente
+    const id = this.route.snapshot.paramMap.get('id')!;
+    this.treino = this.treinosStore.getTreinoById(id);
   }
 
   guardarData() {
     if (!this.treino) return;
-    this.treinosStore.updateData(this.treino.id, this.treino.data);
+
+    this.treinosStore.updateTreino(this.treino);
     this.mostrarMensagem('Data atualizada com sucesso');
   }
   
@@ -45,12 +46,9 @@ export class Editar implements OnInit {
     const ex = this.treino.exercicios.find((e) => e.id === idExercicio);
     if (!ex) return;
 
-    this.treinosStore.actualizarTreino(this.treino.id, idExercicio, {
-      repeticoes: ex.repeticoes,
-      peso: ex.peso,
-    });
+    // Já alteraste ex.repeticoes e ex.peso via ngModel
+    this.treinosStore.updateTreino(this.treino);
 
     this.mostrarMensagem('Exercício guardado');
   }
-
 }

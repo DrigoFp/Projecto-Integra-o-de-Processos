@@ -18,7 +18,7 @@
   <input type="date" [(ngModel)]="treino.data" />
   <button (click)="guardarData()">Guardar Data</button>
 
-  <h3>Exercícios</h3>
+  <h2>Exercícios</h2>
 
   @for (ex of treino.exercicios; track $index) {
     <div class="exercicio-box">

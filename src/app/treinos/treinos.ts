@@ -17,6 +17,7 @@ export class Treinos implements OnInit {
   constructor(private treinosStore: TreinosStore) {}
 
   ngOnInit(): void {
-    this.treinos = this.treinosStore.getTreinos();
+    this.treinosStore.treinos$.subscribe(t => this.treinos = t);
+
   }
 }
