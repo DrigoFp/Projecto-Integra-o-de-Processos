@@ -6,9 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "lint": "npx eslint .",
-    "ci": "ng lint && ng build"
+    "test": "ng test"
   },
   "private": true,
   "packageManager": "npm@11.6.2",
