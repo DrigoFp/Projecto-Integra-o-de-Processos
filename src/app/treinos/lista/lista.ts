@@ -14,8 +14,9 @@ export class Lista implements OnInit {
   treinos: Treino[] = [];
   filtroTipo: string = '';
 
-  constructor(public treinosStore: TreinosStore,
-    private router: Router
+  constructor(
+    public treinosStore: TreinosStore,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -54,11 +55,11 @@ export class Lista implements OnInit {
     return this.treinos.length > 0 ? this.treinos[0] : null;
   }
 
-  apagarTreino(id: number) {
+  apagarTreino(id: string) {
     this.treinosStore.deleteTreino(id);
   }
-  verDetalhe(id: number) {
-  this.router.navigate(['/treinos', id]);
-}
 
+  verDetalhe(id: string) {
+    this.router.navigate(['/treinos', id]);
+  }
 }

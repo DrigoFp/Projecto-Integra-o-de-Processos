@@ -39,7 +39,7 @@
   <section class="lista">
 
     @for (t of treinosFiltrados; track t.id) {
-      <div class="card" (click)="verDetalhe(t.id)">
+      <div class="card treino-card" (click)="verDetalhe(t.id)">
         <header>
           <h3>{{ t.nome }}</h3>
         </header>

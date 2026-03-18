@@ -20,6 +20,7 @@ export class Criar {
   hoje = new Date().toISOString().split('T')[0];
   tipoFixo = false;
   exerciciosTemp: any[] = [];
+  mensagem: string = '';
 
   form = new FormGroup({
     data: new FormControl('', Validators.required),
@@ -76,7 +77,6 @@ export class Criar {
     this.form.get('repeticoes')?.markAsUntouched();
   }
 
-  // GETTER PARA VALIDAR O BOTÃO
   get podeAdicionar(): boolean {
     const exercicio = this.form.get('exercicio')?.value;
     const carga = this.form.get('carga')?.value;
@@ -103,7 +103,6 @@ export class Criar {
       repeticoes: null,
     });
 
-    // limpar estado dos campos
     this.form.get('carga')?.markAsPristine();
     this.form.get('carga')?.markAsUntouched();
 
@@ -111,26 +110,32 @@ export class Criar {
     this.form.get('repeticoes')?.markAsUntouched();
   }
 
-  finalizarTreino() {
-    const tipoSelecionado = this.form.get('tipo')?.value;
-    const tipo = this.treinosStore.tipos.find((t) => t.nome === tipoSelecionado);
+async finalizarTreino() {
+  const tipoSelecionado = this.form.get('tipo')?.value;
+  const tipo = this.treinosStore.tipos.find((t) => t.nome === tipoSelecionado);
 
-    if (!tipo) return;
+  if (!tipo) return;
 
-    const novoTreino = {
-      id: this.treinosStore.getNextId(),
-      nome: tipo.nome,
-      tipo: tipo.nome,
-      data: this.form.get('data')?.value ?? '',
-      exercicios: this.exerciciosTemp,
-    };
+  const novoTreino = {
+    nome: tipo.nome,
+    tipo: tipo.nome,
+    data: this.form.get('data')?.value ?? '',
+    exercicios: this.exerciciosTemp,
+  };
 
-    this.treinosStore.addTreino(novoTreino);
+  await this.treinosStore.addTreino(novoTreino);
 
-    this.form.reset();
-    this.exerciciosTemp = [];
-    this.tipoFixo = false;
-  }
+  this.mensagem = "Treino criado com sucesso!";
+
+  setTimeout(() => {
+    this.mensagem = "";
+  }, 2000);
+
+  this.form.reset();
+  this.exerciciosTemp = [];
+  this.tipoFixo = false;
+}
+
 
   campoInvalido(campo: string): boolean {
     const control = this.form.get(campo);

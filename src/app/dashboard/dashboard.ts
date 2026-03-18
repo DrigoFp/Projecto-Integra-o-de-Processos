@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { SaudacaoPipe } from '../saudacao-pipe';
 import { TreinosStore } from '../treinos/treinos-store';
 import { KpiCardComponent } from '../shared/components/kpi-card/kpi-card.component';
+import { SupabaseService } from '../services/supabase.service';  
+import { Router } from '@angular/router';                         
 
 @Component({
   selector: 'app-dashboard',
@@ -20,7 +22,11 @@ export class Dashboard {
   estatisticasVisiveis: boolean = false;
   estatisticas: any = null;
 
-  constructor(private treinosStore: TreinosStore) {}
+  constructor(
+    private treinosStore: TreinosStore,
+    private supabase: SupabaseService,   
+    private router: Router               
+  ) {}
 
   ngOnInit() {
     this.treinosStore.treinos$.subscribe((treinos) => {
@@ -69,6 +75,7 @@ export class Dashboard {
 
     return estatisticas;
   }
+
   getTreinoKeys(obj: any) {
     return Object.keys(obj);
   }
@@ -83,5 +90,13 @@ export class Dashboard {
 
   get mediaExercicios(): number {
     return this.totalTreinos === 0 ? 0 : Math.round(this.totalExercicios / this.totalTreinos);
+  }
+
+  // ---------------------------------------
+  // 🚀 LOGOUT
+  // ---------------------------------------
+  async logout() {
+    await this.supabase.signOut();
+    this.router.navigate(['/login']);
   }
 }

@@ -6,10 +6,12 @@
 }
 
 /* ======== TÍTULO ======== */
-h2 {
+.top-bar h2 {
   text-align: center;
   color: rgb(24, 164, 201);
   margin-bottom: 20px;
+  font-size: 26px;
+  letter-spacing: 1px;
 }
 
 /* ======== LISTA DE CARDS ======== */
@@ -27,6 +29,13 @@ h2 {
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(255,255,255,0.05);
   color: rgb(24, 164, 201);
+  transition: 0.2s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 15px rgba(24,164,201,0.15);
 }
 
 .card header {
@@ -74,12 +83,6 @@ h2 {
   background: #b02a37;
 }
 
-/* Botão do topo */
-.btn-criar {
-  display: block;
-  margin: 0 auto 20px auto;
-}
-
 /* ======== SELECT COMO BOTÃO ======== */
 .filtro-select {
   appearance: none;
@@ -109,6 +112,7 @@ h2 {
   padding: 10px 14px;
   border-radius: 8px;
   border: 1px solid #222;
+  box-shadow: 0 0 8px rgba(255,255,255,0.05);
 }
 
 /* ======== FILTROS ======== */
