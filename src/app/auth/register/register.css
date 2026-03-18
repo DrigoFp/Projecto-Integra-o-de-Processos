@@ -1,0 +1,85 @@
+/* ======== CONTAINER ======== */
+.login-container {
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 30px;
+  background: #0a0a0a;
+  border: 1px solid #222;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(24,164,201,0.15);
+  text-align: center;
+}
+
+/* ======== TÍTULO ======== */
+h2 {
+  margin-bottom: 20px;
+  color: #4da3ff;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+/* ======== FORM ======== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Inputs */
+input {
+  padding: 12px;
+  border: 1px solid #333;
+  border-radius: 6px;
+  background: #111;
+  color: rgb(24, 164, 201);
+  font-size: 15px;
+}
+
+input:focus {
+  outline: none;
+  border-color: #4da3ff;
+  box-shadow: 0 0 6px rgba(24,164,201,0.4);
+}
+
+/* Botão */
+button {
+  padding: 12px;
+  background-color: #4da3ff;
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+button:hover {
+  background-color: #1e7fe0;
+  transform: scale(1.03);
+}
+
+button:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}
+
+/* Link */
+a {
+  margin-top: 10px;
+  display: inline-block;
+  color: #4da3ff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Erro */
+.erro {
+  color: #ff4d4d;
+  font-size: 14px;
+  margin-top: -5px;
+}
