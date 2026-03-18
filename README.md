@@ -1,59 +1,118 @@
-# ProjectoFinal
+# 🏋️‍♂️ Treinos App — Projeto Final Angular
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.0.
+Aplicação desenvolvida como projeto final da unidade curricular de **Integração de Processos / Angular**, permitindo gerir treinos, exercícios e estatísticas pessoais, com autenticação e armazenamento de dados através do **Supabase**.
 
-## Development server
+---
 
-To start a local development server, run:
+## 📌 Funcionalidades Principais
 
+### 🔐 Autenticação (Supabase Auth)
+- Login com email e password.
+- Logout com limpeza de sessão.
+- Redirecionamento automático entre páginas protegidas e públicas.
+
+### 🏋️‍♂️ Gestão de Treinos
+#### ✔ Criar Treinos
+- Definir nome, tipo, data e exercícios.
+- Cada exercício inclui: **nome**, **peso**, **repetições**.
+
+#### ✔ Listar Treinos
+- Visualização em **cards** com UI melhorada.
+- Filtros por tipo de treino.
+- Estatísticas automáticas:
+  - Total de treinos
+  - Total de exercícios
+  - Último treino realizado
+
+#### ✔ Ver Detalhe do Treino
+- Mostra todos os exercícios associados.
+- Botões para **editar** e **apagar**.
+
+#### ✔ Editar Treino
+- Atualização completa dos dados.
+- Integração com Supabase para atualizar registos.
+
+#### ✔ Apagar Treino
+- Remoção direta no Supabase.
+- Confirmação antes de eliminar.
+
+---
+
+## 🧠 Arquitetura e Tecnologias
+
+- **Angular 17+**
+- **Standalone Components**
+- **Angular Router**
+- **Supabase (Auth + Database)**
+- **RxJS (BehaviorSubject)**
+- **TypeScript**
+- **HTML / CSS**
+- **Componentes reutilizáveis (KPI Cards, Header, Dashboard, etc.)**
+
+---
+
+## 📂 Estrutura do Projeto
+
+```
+src/app/
+├── auth/
+│   ├── login/
+│   └── services/
+├── dashboard/
+├── treinos/
+│   ├── lista/
+│   ├── criar/
+│   ├── editar/
+│   ├── detalhe/
+│   └── treino.service.ts
+├── shared/
+│   ├── components/kpi-card/
+│   ├── models/
+│   └── utils/
+├── header/
+├── footer/
+└── app.routes.ts
+```
+
+---
+
+## 🚀 Como Executar o Projeto
+
+### 1️⃣ Instalar dependências
+```bash
+npm install
+```
+
+### 2️⃣ Iniciar o servidor de desenvolvimento
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+### 3️⃣ Aceder à aplicação
+```
+http://localhost:4200
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
-```
+## 📦 Integração com Supabase
 
-## Building
+A aplicação utiliza:
+- **Supabase Auth** para login/logout
+- **Supabase Database** para guardar treinos e exercícios
+- Métodos CRUD implementados no serviço `treino.service.ts`
 
-To build the project run:
+---
 
-```bash
-ng build
-```
+## 🧾 Conclusão
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Este projeto demonstra a criação de uma SPA em Angular com:
+- Autenticação real
+- Integração com backend (Supabase)
+- Gestão de estado reativa com BehaviorSubject
+- Componentes standalone
+- UI moderna e modular
+- Fluxo completo de CRUD de treinos
 
-## Running unit tests
+O resultado é uma aplicação funcional, escalável e alinhada com boas práticas de desenvolvimento frontend.
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
