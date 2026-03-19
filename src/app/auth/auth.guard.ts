@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivateFn, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { SupabaseService } from '../services/supabase.service';
 
 @Injectable({
