@@ -1,0 +1,11 @@
+{
+  "treinos": [],
+  "users": [
+    {
+      "id": 1,
+      "email": "sraquelvmachado@gmail.com",
+      "password": "322700",
+      "name": "Raquel"
+    }
+  ]
+}
