@@ -29,3 +29,5 @@ export class App {
     }
   }
 }
+
+let qwer =1;
