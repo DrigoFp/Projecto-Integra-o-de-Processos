@@ -1,3 +1,5 @@
+[![CI](https://github.com/DrigoFp/Projecto-Integra-o-de-Processos/actions/workflows/ci.yml/badge.svg)](https://github.com/DrigoFp/Projecto-Integra-o-de-Processos/actions/workflows/ci.yml)
+
 # 🏋️‍♂️ Treinos App — Projeto Final Angular
 
 Aplicação desenvolvida como projeto final da unidade curricular de **Integração de Processos / Angular**, permitindo gerir treinos, exercícios e estatísticas pessoais, com autenticação e armazenamento de dados através do **Supabase**.
